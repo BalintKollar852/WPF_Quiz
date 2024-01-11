@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WPF_Quiz
 {
@@ -43,9 +45,19 @@ namespace WPF_Quiz
     }
     public partial class Quiz : Page
     {
+        public int timerNumber = 0;
         public Quiz()
         {
             InitializeComponent();
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Start();
+            dispatcherTimer.Tick += dispatcherTimer_Tick;
+        }
+        //ez fut le folyamatosan
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            timerNumber -= Timer;
+            timerLabel.Content = 
         }
     }
 }

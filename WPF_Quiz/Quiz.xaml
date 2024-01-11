@@ -8,6 +8,9 @@
         Title="Quiz" Height="450" Width="800">
     <Grid Background="#040c0e">
         <StackPanel>
+            <Label x:Name="timerLabel" Foreground="White" HorizontalAlignment="Center" Content="00:00" FontWeight="Bold" FontSize="25"></Label>
+        </StackPanel>
+        <StackPanel Margin="0, 25, 0, 0">
             <Label x:Name="Previous_resultslabel" Content="eddigi eredményei: " Foreground="White"></Label>
             <TextBox x:Name="Previous_resultstext" Height="50" IsReadOnly="True"></TextBox>
             <Label Content="Témakör:" Foreground="White"></Label>
