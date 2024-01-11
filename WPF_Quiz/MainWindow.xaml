@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Quiz"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Form1" Height="450" Width="800" Background="#040c0e" Foreground="White" MinHeight="300" MinWidth="600">
+    <Viewbox>
+        <Grid Width="375">
+            <StackPanel>
+                <Label Foreground="White" FontSize="15" Content="Adja meg a teljes nevét: "></Label>
+                <ComboBox x:Name="Name_input" IsEditable="True" HorizontalAlignment="Stretch" Foreground="Black" FontWeight="Bold" TextBoxBase.TextChanged="ComboBoxName_TextChanged"/>
+                <Label Foreground="White" FontSize="15" Content="Adja meg a témakört: "></Label>
+                <Grid Background="#132226">
+                    <RadioButton x:Name="category1_button" Foreground="White" Content="Edzőterem" Margin="10,5,0,0" IsChecked="True"/>
+                    <RadioButton x:Name="category2_button" Foreground="White" Content="Vadászat" Margin="10,25,0,0"/>
+                    <RadioButton x:Name="category3_button" Foreground="White" Content="Tudatmódosítószerek" Margin="10,45,0,5"/>
+                </Grid>
+                <Button Click="GameClick" x:Name="GameStart_Button" IsEnabled="False" Content="Játék indítása" Background="#132226" Foreground="White" Width="80" Margin="0, 25, 0, 10" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <Frame x:Name="MainFrame" Margin="-83,0,-83,0"/>
+        </Grid>
+    </Viewbox>
 </Window>

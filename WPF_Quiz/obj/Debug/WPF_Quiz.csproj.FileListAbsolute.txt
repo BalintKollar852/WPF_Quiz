@@ -1,0 +1,17 @@
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\obj\Debug\WPF_Quiz.csproj.AssemblyReference.cache
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\obj\Debug\MainWindow.g.cs
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\obj\Debug\App.g.cs
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\obj\Debug\WPF_Quiz_MarkupCompile.cache
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\obj\Debug\WPF_Quiz_MarkupCompile.lref
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\bin\Debug\WPF_Quiz.exe.config
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\bin\Debug\WPF_Quiz.exe
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\bin\Debug\WPF_Quiz.pdb
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\obj\Debug\MainWindow.baml
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\obj\Debug\WPF_Quiz.g.resources
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\obj\Debug\WPF_Quiz.Properties.Resources.resources
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\obj\Debug\WPF_Quiz.csproj.GenerateResource.cache
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\obj\Debug\WPF_Quiz.csproj.CoreCompileInputs.cache
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\obj\Debug\WPF_Quiz.exe
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\obj\Debug\WPF_Quiz.pdb
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\obj\Debug\Quiz.g.cs
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\obj\Debug\Quiz.baml
