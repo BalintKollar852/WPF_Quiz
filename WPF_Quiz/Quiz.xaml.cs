@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
@@ -49,9 +51,17 @@ namespace WPF_Quiz
         private List<string> cat1questions = new List<string>();
         private List<string> cat2questions = new List<string>();
         private List<string> cat3questions = new List<string>();
+        private float timerNumber = 30;
         public Quiz()
         {
             InitializeComponent();
+
+            //Ez arra kell hogy futtassuk minden masodpercben a metodot
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += dispatcherTimer_Tick;
+            timer.Start();
+            /*
             Previous_resultslabel.Content = $"{MainWindow.Name} eddigi eredményei: ";
             foreach (string sor in File.ReadAllLines(@"players.txt"))
             {
@@ -90,7 +100,17 @@ namespace WPF_Quiz
                 case 2:
                     Topic_text.Text = "Gaming";
                     break;
-            }
+            }*/
+        }
+        //ez fut le folyamatosan (masodperc megfigyelesem szerint)
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            if (timerNumber >= 0) { timerLabel.Content = timerNumber--; Passed(); }
+        }
+        // ez akkor fut le ha idozitonek vege
+        private void Passed()
+        {
+
         }
     }
 }
