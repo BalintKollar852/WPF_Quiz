@@ -130,7 +130,7 @@ namespace WPF_Quiz
                 case 2:
                     Topic_text.Text = "Gaming";
                     break;
-            }*/
+            }
         }
         //ez fut le folyamatosan (masodperc megfigyelesem szerint)
         private void dispatcherTimer_Tick(object sender, EventArgs e)
