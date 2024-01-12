@@ -44,11 +44,28 @@ namespace WPF_Quiz
             Category3QuestionsNumber = Convert.ToInt32(s[6]);
         }
     }
+    class Questions
+    {
+        public string Question { get; private set; }
+        public int CorrectNumber { get; private set; }
+        public string Answer1 { get; private set; }
+        public string Answer2 { get; private set; }
+        public string Answer3 { get; private set; }
+        public string Answer4 { get; private set; }
+        public Questions(string line)
+        {
+            string[] s = line.Split(';');
+            Question = s[2];
+            CorrectNumber = Convert.ToInt32(s[1]);
+            Answer1 = s[3];
+            Answer2 = s[4];
+            Answer3 = s[5];
+            Answer4 = s[6];
+        }
+    }
     public partial class Quiz : Page
     {
-        private List<string> cat1questions = new List<string>();
-        private List<string> cat2questions = new List<string>();
-        private List<string> cat3questions = new List<string>();
+        private Random rng = new Random();
         public Quiz()
         {
             InitializeComponent();
@@ -71,13 +88,26 @@ namespace WPF_Quiz
                 }
                 Previous_resultstext.Text = szo;
             }
-            foreach (string sor in File.ReadAllLines(@"szavak.txt"))
+            /* foreach (string sor in File.ReadAllLines(@"questions.txt"))
+             {
+                 string[] s = sor.Split(';');
+                 if (s[0] == "i" && MainWindow.Type_number == 0) cat1questions.Add(s);
+                 if (s[0] == "e" && MainWindow.Type_number == 1) cat2questions.Add(s);
+                 if (s[0] == "g" && MainWindow.Type_number == 2) cat3questions.Add(s);
+             }*/
+            List<Questions> questionslist = new List<Questions>();
+            foreach (string sor in File.ReadAllLines(@"questions.txt"))
             {
                 string[] s = sor.Split(';');
-                if (s[1] == "i") cat1questions.Add(s[0]);
-                if (s[1] == "e") cat2questions.Add(s[0]);
-                if (s[1] == "g") cat3questions.Add(s[0]);
+                if (s[0] == "i" && MainWindow.Type_number == 0) questionslist.Add(new Questions(sor));
+                if (s[0] == "e" && MainWindow.Type_number == 1) questionslist.Add(new Questions(sor));
+                if (s[0] == "g" && MainWindow.Type_number == 2) questionslist.Add(new Questions(sor));
             }
+            List<Questions> shuffledquestions = new List<Questions>();
+            shuffledquestions = (List<Questions>)questionslist.OrderBy(a => rng.Next()).Take(10).ToList();
+            //Ez már randomizált kérdés a beolvasott adatokból és 10db van elvéve belőle(ezt késöbb akár változtathatóra is lehet majd csinálni)
+            Questions_text.Text = shuffledquestions[0].Question;
+
 
             switch (MainWindow.Type_number)
             {
