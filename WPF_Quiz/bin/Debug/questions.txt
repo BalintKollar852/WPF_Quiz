@@ -1,0 +1,31 @@
+i;2;Mi a HTML szó jelentése?;Hyper Training Markup Language;Hyper Text Markup Language;Hyperlink Text Markup Language;Hyper Tag Markup Language
+i;2;Milyen programozási nyelv használható az Android alkalmazások fejlesztésére?;Swift;Java;C++;Python
+i;1;Melyik az egyik legismertebb adatbázis-kezelő rendszer?;MySQL;BigData;DataWare;DataStore
+i;1;Mi az IP cím szerepe az interneten?;Az interneten található weboldalak címének beazonosítása;Az internetes keresések optimalizálása;Az internetes vásárlások biztonságossá tétele;Az internetes hirdetések személyre szabása
+i;2;Melyik fájlformátum tömörített, archivált fájlokat tárol?;TXT;ZIP;EXE;DOCX
+i;2;Melyik vállalat fejlesztette ki a Windows operációs rendszert?;Apple;Microsoft;IBM;Adobe
+i;3;Melyik a legismertebb internetes keresőmotor?;SpaceSeek;FindIt;Google;SearchMaster
+i;2;Mi a kibertér?;Egy másik dimenzió;Az interneten létező virtuális tér;Egy játékbeli térkép;Egy digitális térkép
+i;2;Mi a CSS szerepe a webfejlesztésben?;Adatbázis-kezelés;Stílusok meghatározása weboldalakon;Videók szerkesztése;Weboldalak látogatottságának elemzése
+i;2;Melyik az egyik legnépszerűbb számítógépes operációs rendszer?;Linux;Windows;iOS;Android
+i;2;Mi a legnagyobb közösségi média platform neve?;Snapchat;Facebook;Twitter;Instagram
+i;1;Mi a jelentése az "URL" rövidítésnek?;Uniform Resource Locator;Universal Region Label;User Reset Location;Under Real-time Language
+i;3;Melyik nem egy programozási nyelv?;Java;C++;HTML;CSS
+i;4;Melyik számítógépes periféria eszköz segít a szöveges dokumentumok bevitelében?;Monitor;Nyomtató;Egér;Billentyűzet
+i;3;Mi a "RAM" rövidítése?;Read Access Memory;Readily Accessed Material;Random Access Memory;Real-time Archived Memory
+i;2;Mi a szerepe a "firewall"-nak az informatikában?;Hálózati kapcsolatokat biztosít;Védelmet nyújt a nem kívánt hálózati forgalom ellen;A számítógép alaplapjának egyik eleme;Adatok tárolása a felhőben
+i;4;Melyik számítógépes adathordozó típusa a legelterjedtebb?;Floppy lemez;CD;Szalagos kazetta;USB flash meghajtó
+i;1;Melyik a legelterjedtebb internetes kommunikációs protokoll?;HTTP;FTP;SMTP;SSH
+i;4;Mi az "AI" szerepe az informatikában?;Adatbázis-kezelés;Weboldalak látogatottságának elemzése;Szoftverfejlesztés;Mesterséges intelligencia alkalmazása
+i;2;Melyik szolgáltatás használja az "SMTP" protokollt?;Webes keresés;E-mail küldés;Fájlok megosztása;Távoli asztal elérése
+i;2;Melyik vállalat fejlesztette ki a macOS operációs rendszert?;Microsoft;Apple;IBM;Google
+i;3;Melyik számítógépes program segítségével lehet prezentációt készíteni?;Microsoft Word;Adobe Photoshop;Microsoft PowerPoint;Adobe Illustrator
+i;1;Mi a szerepe a "router"-nek az informatikában?;Adatok továbbítása a hálózaton keresztül;Adatok tárolása a felhőben;Szoftverfrissítések telepítése;Víruskeresés a számítógépen
+i;1;Miért fontosak a "cookie"-k az internetes böngészés során?;Felhasználói élmény javítása és személyre szabott tartalom nyújtása;Vírusok elleni védelem;Hálózati kapcsolatok biztosítása;Adatok tárolása a felhőben
+i;4;Melyik vállalat fejlesztette ki a Linux operációs rendszert?;Microsoft;Apple;IBM;Linux Foundation
+i;3;Melyik nem egy adatbázis-kezelő rendszer?;MySQL;Oracle;Linux;Microsoft SQL Server
+i;1;Mi a "VPN" szerepe az internetes kommunikációban?;Biztonságos kapcsolat kialakítása az interneten keresztül;Webes keresés optimalizálása;Felhasználói élmény javítása;Online vásárlások biztonságossá tétele
+i;4;Melyik számítógépes periféria eszköz segít a rajzolásban és grafikai tervezésben?;Monitor;Nyomtató;Egér;Grafikus tábla
+i;4;Melyik a legnépszerűbb programozási nyelv a webfejlesztés terén?;Java;Python;C++;Php
+i;3;Melyik nem számítógépes operációs rendszer?;Windows;Linux;iOS;Facebook
+i;1;Mi a "LAN" szerepe az informatikában?;Helyi hálózati kapcsolatok biztosítása;Adatok tárolása a felhőben;Webes keresés optimalizálása;Felhasználói élmény javítása

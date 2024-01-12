@@ -7,16 +7,22 @@
         mc:Ignorable="d"
         Title="Quiz" Height="450" Width="800">
     <Grid Background="#040c0e">
-        <StackPanel>
+        <Viewbox>
             <Label x:Name="timerLabel" Foreground="White" HorizontalAlignment="Center" Content="00:00" FontWeight="Bold" FontSize="25"></Label>
-        </StackPanel>
+
+        </Viewbox>
         <StackPanel Margin="0, 25, 0, 0">
             <Label x:Name="Previous_resultslabel" Content="eddigi eredményei: " Foreground="White"></Label>
             <TextBox x:Name="Previous_resultstext" Height="50" IsReadOnly="True"></TextBox>
             <Label Content="Témakör:" Foreground="White"></Label>
-            <TextBox x:Name="Topic_text" IsReadOnly="True"></TextBox>
-            <Label Content="Questions_label" Foreground="White"></Label>
-            <TextBox x:Name="Questions_text" IsReadOnly="True"></TextBox>
+            <TextBox x:Name="Topic_text" Height="30" IsReadOnly="True"></TextBox>
+            <Label Content="Kérdés:" Foreground="White"></Label>
+            <TextBox x:Name="Questions_text" Height="30" IsReadOnly="True"></TextBox>
+            <TextBox TextWrapping="Wrap" Text="1" TextAlignment="Center" Height="30" Width="800" HorizontalAlignment="Left" Margin="0,30,0,0" Background="LightBlue" Foreground="Black" FontSize="18" FontFamily="Arial Black"/>
+            <TextBox TextWrapping="Wrap" Text="2" TextAlignment="Center" Height="30" Width="800" HorizontalAlignment="Left" Background="LightBlue" Foreground="Black" FontSize="18" FontFamily="Arial Black"/>
+            <TextBox TextWrapping="Wrap" Text="3" TextAlignment="Center" Height="30" Width="800" HorizontalAlignment="Left" Background="LightBlue" Foreground="Black" FontSize="18" FontFamily="Arial Black"/>
+            <TextBox TextWrapping="Wrap" Text="4" TextAlignment="Center" Height="30" Width="800" HorizontalAlignment="Left" Background="LightBlue" Foreground="Black" FontSize="18" FontFamily="Arial Black"/>
+            <Button Content="Tovább" HorizontalAlignment="Center" Margin="0,20,0,0" Width="188" Height="50" Background="LightBlue" Foreground="Black" FontFamily="Arial Black" FontSize="18"/>
         </StackPanel>
         <Frame x:Name="MainFrame" Margin="-83,0,-83,0"/>
     </Grid>

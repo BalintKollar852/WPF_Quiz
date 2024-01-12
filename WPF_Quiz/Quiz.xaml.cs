@@ -49,15 +49,6 @@ namespace WPF_Quiz
         public Quiz()
         {
             InitializeComponent();
-            DispatcherTimer dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Start();
-            dispatcherTimer.Tick += dispatcherTimer_Tick;
-        }
-        //ez fut le folyamatosan
-        private void dispatcherTimer_Tick(object sender, EventArgs e)
-        {
-            timerNumber -= Timer;
-            timerLabel.Content = 
         }
     }
 }
