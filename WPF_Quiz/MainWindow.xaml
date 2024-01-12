@@ -13,9 +13,9 @@
                 <ComboBox x:Name="Name_input" IsEditable="True" HorizontalAlignment="Stretch" Foreground="Black" FontWeight="Bold" TextBoxBase.TextChanged="ComboBoxName_TextChanged"/>
                 <Label Foreground="White" FontSize="15" Content="Adja meg a témakört: "></Label>
                 <Grid Background="#132226">
-                    <RadioButton x:Name="category1_button" Foreground="White" Content="Edzőterem" Margin="10,5,0,0" IsChecked="True"/>
-                    <RadioButton x:Name="category2_button" Foreground="White" Content="Vadászat" Margin="10,25,0,0"/>
-                    <RadioButton x:Name="category3_button" Foreground="White" Content="Tudatmódosítószerek" Margin="10,45,0,5"/>
+                    <RadioButton x:Name="category1_button" Foreground="White" Content="Informatika" Margin="10,5,0,0" IsChecked="True"/>
+                    <RadioButton x:Name="category2_button" Foreground="White" Content="Edzőterem" Margin="10,25,0,0"/>
+                    <RadioButton x:Name="category3_button" Foreground="White" Content="Gaming" Margin="10,45,0,5"/>
                 </Grid>
                 <Button Click="GameClick" x:Name="GameStart_Button" IsEnabled="False" Content="Játék indítása" Background="#132226" Foreground="White" Width="80" Margin="0, 25, 0, 10" HorizontalAlignment="Center"/>
             </StackPanel>

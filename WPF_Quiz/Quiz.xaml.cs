@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -45,10 +46,51 @@ namespace WPF_Quiz
     }
     public partial class Quiz : Page
     {
-        public int timerNumber = 0;
+        private List<string> cat1questions = new List<string>();
+        private List<string> cat2questions = new List<string>();
+        private List<string> cat3questions = new List<string>();
         public Quiz()
         {
             InitializeComponent();
+            Previous_resultslabel.Content = $"{MainWindow.Name} eddigi eredményei: ";
+            foreach (string sor in File.ReadAllLines(@"players.txt"))
+            {
+                string[] s = sor.Split(';');
+                string szo = "";
+                if (s[0] == MainWindow.Name)
+                {
+                    szo += $"Informatika témakörben nyert {s[1]}, vesztett {s[2]} játékot. \n";
+                    szo += $"Edzőterem témakörben nyert {s[3]}, vesztett {s[4]} játékot. \n";
+                    szo += $"Gaming témakörben nyert {s[5]}, vesztett {s[6]} játékot.";
+                }
+                else
+                {
+                    szo += $"Informatika témakörben nyert 0, vesztett 0 játékot. \n";
+                    szo += $"Edzőterem témakörben nyert 0, vesztett 0 játékot. \n";
+                    szo += $"Gaming témakörben nyert 0, vesztett 0 játékot.";
+                }
+                Previous_resultstext.Text = szo;
+            }
+            foreach (string sor in File.ReadAllLines(@"szavak.txt"))
+            {
+                string[] s = sor.Split(';');
+                if (s[1] == "i") cat1questions.Add(s[0]);
+                if (s[1] == "e") cat2questions.Add(s[0]);
+                if (s[1] == "g") cat3questions.Add(s[0]);
+            }
+
+            switch (MainWindow.Type_number)
+            {
+                case 0:
+                    Topic_text.Text = "Informatika";
+                    break;
+                case 1:
+                    Topic_text.Text = "Edzőterem";
+                    break;
+                case 2:
+                    Topic_text.Text = "Gaming";
+                    break;
+            }
         }
     }
 }
