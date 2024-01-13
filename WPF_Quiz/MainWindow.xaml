@@ -20,6 +20,15 @@
                 </Grid>
                 <Label Foreground="White" FontSize="15" Content="Adja meg a kérdések számát: "></Label>
                 <Slider x:Name="QuestionNumberSlider" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120" Minimum="3" Maximum="15" TickPlacement="BottomRight" IsSnapToTickEnabled="True" TickFrequency="3"  AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0"/>
+                
+                <GroupBox Header="Több válaszos kérdés" >
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton Foreground="White" Name="MultipleAnswer_YesButon" Content="Igen" Margin="25,0,50,0" Click="MultipleAnswer_YesClick" />
+                        <RadioButton Foreground="White" Name="MultipleAnswer_NoButon" Content="Nem" Click="MultipleAnswer_NoClick" />
+                    </StackPanel>
+                </GroupBox>
+                
+                
                 <Button Click="GameClick" x:Name="GameStart_Button" IsEnabled="False" Content="Játék indítása" Background="#132226" Foreground="White" Width="80" Margin="0, 25, 0, 10" HorizontalAlignment="Center"/>
             </StackPanel>
             <Frame x:Name="MainFrame" Margin="-83,0,-83,0"/>

@@ -26,6 +26,7 @@ namespace WPF_Quiz
         public static string Name;
         public static int Question_number;
         public static string Topic_text;
+        public static bool MultipleAnswer;
         public MainWindow()
         {
             InitializeComponent();
@@ -37,14 +38,15 @@ namespace WPF_Quiz
         }
         private void ComboBoxName_TextChanged(object sender, EventArgs e)
         {
-            if (Name_input.Text.Length > 0 && Regex.IsMatch(Name_input.Text, @"^[a-záéúőóüö A-ZZÁÉÚŐÓÜÖÍ]+$"))
-            {
-                GameStart_Button.IsEnabled = true;
-            }
-            else
-            {
-                GameStart_Button.IsEnabled = false;
-            }
+            CheckIfEverythingIsFilled();
+        }
+        public void MultipleAnswer_YesClick(object sender, RoutedEventArgs e)
+        { 
+            CheckIfEverythingIsFilled() ;
+        }
+        public void MultipleAnswer_NoClick(object sender, RoutedEventArgs e)
+        {
+            CheckIfEverythingIsFilled();
         }
         public void GameClick(object sender, RoutedEventArgs e)
         {
@@ -54,6 +56,17 @@ namespace WPF_Quiz
             else if (category2_button.IsChecked == true) { Type_number = 1; Topic_text = "Edzőterem"; }
             else if (category3_button.IsChecked == true) { Type_number = 2; Topic_text = "Gaming"; }
             MainFrame.Content = new Quiz();
+        }
+        private void CheckIfEverythingIsFilled()
+        {
+            if (Name_input.Text.Length > 0 && Regex.IsMatch(Name_input.Text, @"^[a-záéúőóüö A-ZZÁÉÚŐÓÜÖÍ]+$") && (MultipleAnswer_YesButon.IsChecked == true || MultipleAnswer_NoButon.IsChecked == true))
+            {
+                GameStart_Button.IsEnabled = true;
+            }
+            else
+            {
+                GameStart_Button.IsEnabled = false;
+            }
         }
     }
 }

@@ -161,7 +161,7 @@ namespace WPF_Quiz
             }
         }
 
-        private void QuizGame(int answer_number)
+        private void QuizGame(int answer_number, bool timer_passed)
         {
             //Kikapcsolja a RadioButtons-t
             for (int i = 0; i < Answer_buttonslist.Count(); i++)
@@ -176,7 +176,10 @@ namespace WPF_Quiz
             }
             else
             {
-                Answer_buttonslist[answer_number - 1].Foreground = Brushes.Red;
+                if (!timer_passed)
+                {
+                    Answer_buttonslist[answer_number - 1].Foreground = Brushes.Red;
+                }
                 Answer_buttonslist[shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber - 1].Foreground = Brushes.LawnGreen;
             }
 
@@ -259,19 +262,19 @@ namespace WPF_Quiz
         }
         public void Answer1_Click(object sender, RoutedEventArgs e)
         {
-            QuizGame(1);
+            QuizGame(1, false);
         }
         public void Answer2_Click(object sender, RoutedEventArgs e)
         {
-            QuizGame(2);
+            QuizGame(2, false);
         }
         public void Answer3_Click(object sender, RoutedEventArgs e)
         {
-            QuizGame(3);
+            QuizGame(3, false);
         }
         public void Answer4_Click(object sender, RoutedEventArgs e)
         {
-            QuizGame(4);
+            QuizGame(4, false);
         }
         public void Results_Click(object sender, RoutedEventArgs e)
         {
