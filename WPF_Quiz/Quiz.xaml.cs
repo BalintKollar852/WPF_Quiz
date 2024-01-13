@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
@@ -75,15 +76,19 @@ namespace WPF_Quiz
         private List<RadioButton> Answer_buttonslist;
         private int correctanswer_num = 0;
         private string CurrentResults;
+        private DispatcherTimer timer;
+        private List<int> timesateachr = new List<int>();
+        private static int alreadyExecuted = 0;
+        private double averagepoint;
 
         public Quiz()
         {
             InitializeComponent();
 
             //Ez arra kell hogy futtassuk minden masodpercben a metodot
-            DispatcherTimer timer = new DispatcherTimer();
+            timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += dispatcherTimer_Tick;
+            timer.Tick += Timer_Tick;
             timer.Start();
 
             //A válaszok RadioButton-jét egy listába rakom hogy ne kelljen egyesével írni rájuk az utasításokat
@@ -127,22 +132,28 @@ namespace WPF_Quiz
             shuffledquestions = (List<Questions>)questionslist.OrderBy(a => rng.Next()).Take(MainWindow.Question_number).ToList();
             QuestionsAndAnswersLoad();
 
-            
         }
         //ez fut le folyamatosan (masodperc megfigyelesem szerint)
-        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
-            if (timerNumber >= 0) { timerLabel.Content = timerNumber--; Passed(); }
-        }
-        // ez akkor fut le ha idozitonek vege
-        private void Passed()
-        {
-
+            if (timerNumber > 0 && (Answer_buttonslist.All(a => a.IsChecked == false))) timerLabel.Content = timerNumber--;
+            else if (Answer_buttonslist.All(a => a.IsEnabled == true))
+            {
+                QuizGame(0, true); timerLabel.Content = "Az idő lejárt!";
+                timesateachr.Add(0);
+            }
+            else
+            {
+                if (alreadyExecuted == 0) { timesateachr.Add(Convert.ToInt32(29 - timerNumber)); alreadyExecuted++; }
+            }
         }
 
         //Kérdéseket és válaszokat betölti
         private void QuestionsAndAnswersLoad()
         {
+            timerNumber = 29;
+            alreadyExecuted = 0;
+            timerLabel.Content = "30";
             CurrentQuestionNumber++;
             Questions_text.Text = shuffledquestions[CurrentQuestionNumber - 1].Question;
             Answer1_button.Content = shuffledquestions[CurrentQuestionNumber - 1].Answer1;
@@ -157,7 +168,7 @@ namespace WPF_Quiz
             }
             else
             {
-                NextQuestion_button.IsEnabled = false ; 
+                NextQuestion_button.IsEnabled = false;
             }
         }
 
@@ -180,6 +191,17 @@ namespace WPF_Quiz
                 {
                     Answer_buttonslist[answer_number - 1].Foreground = Brushes.Red;
                 }
+                //Ha lejár az idő az inkorrekt válaszokat pirosra rakja
+                else
+                {
+                    for (int i = 0; i < Answer_buttonslist.Count; i++)
+                    {
+                        if (i != shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber - 1)
+                        {
+                            Answer_buttonslist[i].Foreground = Brushes.Red;
+                        }
+                    }
+                }
                 Answer_buttonslist[shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber - 1].Foreground = Brushes.LawnGreen;
             }
 
@@ -189,6 +211,7 @@ namespace WPF_Quiz
             //Hogyha az utolsó kérdésre is lett válasz adva akkor az 'Eredmények' gombot bekapcsolja
             if (CurrentQuestionNumber >= MainWindow.Question_number && Answer_buttonslist.All(b=>b.IsEnabled == false))
             {
+                averagepoint = timesateachr.Average();
                 WriteToFile();
                 CurrentResults_ToAnotherPage = CurrentResults + $"Összesen {correctanswer_num} jó választ adott.";
                 Results_button.IsEnabled = true ;
