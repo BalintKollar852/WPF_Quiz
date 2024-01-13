@@ -23,7 +23,9 @@ namespace WPF_Quiz
     public partial class MainWindow : Window
     {
         public static int Type_number;
-        public static string Name = "";
+        public static string Name;
+        public static int Question_number;
+        public static string Topic_text;
         public MainWindow()
         {
             InitializeComponent();
@@ -46,10 +48,11 @@ namespace WPF_Quiz
         }
         public void GameClick(object sender, RoutedEventArgs e)
         {
+            Question_number = Convert.ToInt32(QuestionNumberSlider.Value);
             Name = Convert.ToString(Name_input.Text);
-            if (category1_button.IsChecked == true) Type_number = 0;
-            else if (category2_button.IsChecked == true) Type_number = 1;
-            else if (category3_button.IsChecked == true) Type_number = 2;
+            if (category1_button.IsChecked == true) { Type_number = 0; Topic_text = "Informatika"; }
+            else if (category2_button.IsChecked == true) { Type_number = 1; Topic_text = "Edzőterem"; }
+            else if (category3_button.IsChecked == true) { Type_number = 2; Topic_text = "Gaming"; }
             MainFrame.Content = new Quiz();
         }
     }

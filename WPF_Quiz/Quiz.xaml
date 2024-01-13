@@ -15,14 +15,17 @@
             <TextBox x:Name="Previous_resultstext" Height="50" IsReadOnly="True"></TextBox>
             <Label Content="Témakör:" Foreground="White"></Label>
             <TextBox x:Name="Topic_text" Height="30" IsReadOnly="True"></TextBox>
-            <Label Content="Kérdés:" Foreground="White"></Label>
+            <Label x:Name="QuestionLabel" Content="Kérdés:" Foreground="White"></Label>
             <TextBox x:Name="Questions_text" Height="30" IsReadOnly="True"></TextBox>
-            <TextBox TextWrapping="Wrap" Text="1" TextAlignment="Center" Height="30" Width="800" HorizontalAlignment="Left" Margin="0,30,0,0" Background="LightBlue" Foreground="Black" FontSize="18" FontFamily="Arial Black"/>
-            <TextBox TextWrapping="Wrap" Text="2" TextAlignment="Center" Height="30" Width="800" HorizontalAlignment="Left" Background="LightBlue" Foreground="Black" FontSize="18" FontFamily="Arial Black"/>
-            <TextBox TextWrapping="Wrap" Text="3" TextAlignment="Center" Height="30" Width="800" HorizontalAlignment="Left" Background="LightBlue" Foreground="Black" FontSize="18" FontFamily="Arial Black"/>
-            <TextBox TextWrapping="Wrap" Text="4" TextAlignment="Center" Height="30" Width="800" HorizontalAlignment="Left" Background="LightBlue" Foreground="Black" FontSize="18" FontFamily="Arial Black"/>
-            <Button Content="Tovább" HorizontalAlignment="Center" Margin="0,20,0,0" Width="188" Height="50" Background="LightBlue" Foreground="Black" FontFamily="Arial Black" FontSize="18"/>
+            <Grid x:Name="Answers_Grid" Background="#101316">
+                <RadioButton x:Name="Answer1_button" Foreground="White" Margin="10,5,0,0"  Click="Answer1_Click"/>
+                <RadioButton x:Name="Answer2_button" Foreground="White" Margin="10,25,0,0" Click="Answer2_Click"/>
+                <RadioButton x:Name="Answer3_button" Foreground="White" Margin="10,45,0,0" Click="Answer3_Click"/>
+                <RadioButton x:Name="Answer4_button" Foreground="White" Margin="10,65,0,5" Click="Answer4_Click"/>
+            </Grid>
+            <Button x:Name="NextQuestion_button" Content="Következő kérdés" HorizontalAlignment="Center" Margin="0,20,0,0" Width="436" Height="50" Foreground="Black" FontFamily="Arial Black" FontSize="18" Click="NextQuestionClick" IsEnabled="False"/>
+            <Button x:Name="Results_button" Content="Eredmények" HorizontalAlignment="Center" Margin="0,20,0,0" Width="436" Height="50" Foreground="Black" FontFamily="Arial Black" FontSize="18" IsEnabled="False" Click="Results_Click"/>
         </StackPanel>
-        <Frame x:Name="MainFrame" Margin="-83,0,-83,0"/>
+        <Frame x:Name="MainFrame"/>
     </Grid>
 </Page>

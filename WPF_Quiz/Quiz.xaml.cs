@@ -67,8 +67,15 @@ namespace WPF_Quiz
     }
     public partial class Quiz : Page
     {
+        public static string CurrentResults_ToAnotherPage;
         private Random rng = new Random();
         private float timerNumber = 30;
+        private int CurrentQuestionNumber = 0;
+        private List<Questions> shuffledquestions = new List<Questions>();
+        private List<RadioButton> Answer_buttonslist;
+        private int correctanswer_num = 0;
+        private string CurrentResults;
+
         public Quiz()
         {
             InitializeComponent();
@@ -78,59 +85,49 @@ namespace WPF_Quiz
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += dispatcherTimer_Tick;
             timer.Start();
-            /*
+
+            //A válaszok RadioButton-jét egy listába rakom hogy ne kelljen egyesével írni rájuk az utasításokat
+            Answer_buttonslist = new List<RadioButton>
+            {
+                Answer1_button,
+                Answer2_button,
+                Answer3_button,
+                Answer4_button
+             };
+
+            //Eddigi eredmények kiírása
             Previous_resultslabel.Content = $"{MainWindow.Name} eddigi eredményei: ";
-            foreach (string sor in File.ReadAllLines(@"players.txt"))
+            string word =  $"Informatika témakörben helyes válaszainak száma: 0/0\n" + "Edzőtererm témakörben helyes válaszainak száma: 0/0\n" + "Gaming témakörben helyes válaszainak száma: 0/0";
+            foreach (string line in File.ReadAllLines(@"players.txt"))
             {
-                string[] s = sor.Split(';');
-                string szo = "";
-                if (s[0] == MainWindow.Name)
+                string[] l = line.Split(';');
+                if (l[0] == MainWindow.Name)
                 {
-                    szo += $"Informatika témakörben nyert {s[1]}, vesztett {s[2]} játékot. \n";
-                    szo += $"Edzőterem témakörben nyert {s[3]}, vesztett {s[4]} játékot. \n";
-                    szo += $"Gaming témakörben nyert {s[5]}, vesztett {s[6]} játékot.";
+                    word = String.Empty;
+                    word += $"Informatika témakörben helyes válaszainak száma: {l[1]}/{l[2]}\n";
+                    word += $"Edzőtererm témakörben helyes válaszainak száma: {l[3]}/{l[4]}\n";
+                    word += $"Gaming témakörben helyes válaszainak száma: {l[5]}/{l[6]}";
                 }
-                else
-                {
-                    szo += $"Informatika témakörben nyert 0, vesztett 0 játékot. \n";
-                    szo += $"Edzőterem témakörben nyert 0, vesztett 0 játékot. \n";
-                    szo += $"Gaming témakörben nyert 0, vesztett 0 játékot.";
-                }
-                Previous_resultstext.Text = szo;
             }
-            /* foreach (string sor in File.ReadAllLines(@"questions.txt"))
-             {
-                 string[] s = sor.Split(';');
-                 if (s[0] == "i" && MainWindow.Type_number == 0) cat1questions.Add(s);
-                 if (s[0] == "e" && MainWindow.Type_number == 1) cat2questions.Add(s);
-                 if (s[0] == "g" && MainWindow.Type_number == 2) cat3questions.Add(s);
-             }*/
+            Previous_resultstext.Text = word;
+
+            //A témakör kiírása
+            Topic_text.Text = MainWindow.Topic_text;
+
+            //Kérdések random kiválasztása
             List<Questions> questionslist = new List<Questions>();
-            foreach (string sor in File.ReadAllLines(@"questions.txt"))
+            foreach (string line in File.ReadAllLines(@"questions.txt"))
             {
-                string[] s = sor.Split(';');
-                if (s[0] == "i" && MainWindow.Type_number == 0) questionslist.Add(new Questions(sor));
-                if (s[0] == "e" && MainWindow.Type_number == 1) questionslist.Add(new Questions(sor));
-                if (s[0] == "g" && MainWindow.Type_number == 2) questionslist.Add(new Questions(sor));
+                string[] l = line.Split(';');
+                if (l[0] == "i" && MainWindow.Type_number == 0) questionslist.Add(new Questions(line));
+                if (l[0] == "e" && MainWindow.Type_number == 1) questionslist.Add(new Questions(line));
+                if (l[0] == "g" && MainWindow.Type_number == 2) questionslist.Add(new Questions(line));
             }
-            List<Questions> shuffledquestions = new List<Questions>();
-            shuffledquestions = (List<Questions>)questionslist.OrderBy(a => rng.Next()).Take(10).ToList();
-            //Ez már randomizált kérdés a beolvasott adatokból és 10db van elvéve belőle(ezt késöbb akár változtathatóra is lehet majd csinálni)
-            Questions_text.Text = shuffledquestions[0].Question;
+            //Ezek már a randomizált kérdések/válaszok a beolvasott adatokból a menüben kiválasztott darab számba
+            shuffledquestions = (List<Questions>)questionslist.OrderBy(a => rng.Next()).Take(MainWindow.Question_number).ToList();
+            QuestionsAndAnswersLoad();
 
-
-            switch (MainWindow.Type_number)
-            {
-                case 0:
-                    Topic_text.Text = "Informatika";
-                    break;
-                case 1:
-                    Topic_text.Text = "Edzőterem";
-                    break;
-                case 2:
-                    Topic_text.Text = "Gaming";
-                    break;
-            }
+            
         }
         //ez fut le folyamatosan (masodperc megfigyelesem szerint)
         private void dispatcherTimer_Tick(object sender, EventArgs e)
@@ -141,6 +138,144 @@ namespace WPF_Quiz
         private void Passed()
         {
 
+        }
+
+        //Kérdéseket és válaszokat betölti
+        private void QuestionsAndAnswersLoad()
+        {
+            CurrentQuestionNumber++;
+            Questions_text.Text = shuffledquestions[CurrentQuestionNumber - 1].Question;
+            Answer1_button.Content = shuffledquestions[CurrentQuestionNumber - 1].Answer1;
+            Answer2_button.Content = shuffledquestions[CurrentQuestionNumber - 1].Answer2;
+            Answer3_button.Content = shuffledquestions[CurrentQuestionNumber - 1].Answer3;
+            Answer4_button.Content = shuffledquestions[CurrentQuestionNumber - 1].Answer4;
+            QuestionLabel.Content = $"Kérdés ({CurrentQuestionNumber}/{MainWindow.Question_number})";
+            //Ellenőrzi hogy a jelenlegi krédés nem érte-e el a menüben kiválasztott kérdés db számot, ha eléri akkor kikapcsolja a 'Következő kérdés' gombot
+            if (CurrentQuestionNumber < MainWindow.Question_number)
+            {
+                NextQuestion_button.Content = $"Következő kérdés ({CurrentQuestionNumber + 1}/{MainWindow.Question_number})";
+            }
+            else
+            {
+                NextQuestion_button.IsEnabled = false ; 
+            }
+        }
+
+        private void QuizGame(int answer_number)
+        {
+            //Kikapcsolja a RadioButtons-t
+            for (int i = 0; i < Answer_buttonslist.Count(); i++)
+            {
+                Answer_buttonslist[i].IsEnabled = false ;
+            }
+            //Megnézi hogy a kiválasztott válasz egyezik-e a helyes válasszal és zölddel jelzi az helyességét, pirossal pedig ha téves volt
+            if (shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber == answer_number)
+            {
+                Answer_buttonslist[answer_number - 1].Foreground = Brushes.LawnGreen;
+                correctanswer_num++;
+            }
+            else
+            {
+                Answer_buttonslist[answer_number - 1].Foreground = Brushes.Red;
+                Answer_buttonslist[shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber - 1].Foreground = Brushes.LawnGreen;
+            }
+
+            //A jelenlegi eredményt elmenti egy string változóban amit majd a Result oldadlon felhasználunk
+            CurrentResults += $"{CurrentQuestionNumber}.kérdés: {Questions_text.Text} - Helyes válasz: {Answer_buttonslist[shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber - 1].Content} - Adott válasz: {(answer_number == shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber ? "jó" : "rossz")}\n";
+
+            //Hogyha az utolsó kérdésre is lett válasz adva akkor az 'Eredmények' gombot bekapcsolja
+            if (CurrentQuestionNumber >= MainWindow.Question_number && Answer_buttonslist.All(b=>b.IsEnabled == false))
+            {
+                WriteToFile();
+                CurrentResults_ToAnotherPage = CurrentResults + $"Összesen {correctanswer_num} jó választ adott.";
+                Results_button.IsEnabled = true ;
+            }
+            else if (Answer_buttonslist.All(b => b.IsEnabled == false))
+            {
+                NextQuestion_button.IsEnabled = true ;
+            }
+        }
+
+        //Következő kérdésre lép a 'QuestionsAndAnswersLoad' metódus segítségével
+        public void NextQuestionClick(object sender, RoutedEventArgs e)
+        {
+            //Kikapcsolja a következő válasz gombot (hogy, ameddig nem válaszoltál addig ne lehessen a következő kérdésre lépni)
+            NextQuestion_button.IsEnabled = false;
+            //Kitörli a bejelölt RadioButtont, visszakapcsolja a RadioButtons-t és fehérre állítja a szövegét
+            for (int i = 0; i < Answer_buttonslist.Count(); i++)
+            {
+                Answer_buttonslist[i].IsChecked = false;
+                Answer_buttonslist[i].IsEnabled = true;
+                Answer_buttonslist[i].Foreground = Brushes.White;
+            }
+            QuestionsAndAnswersLoad();
+        }
+
+        //Fájlba írás a játékos adatait (csak akkor menti el ha az összes kérdés véget ért)
+        public void WriteToFile()
+        {
+            List<Players> playerslist = new List<Players>();
+            string fullPath = $"players.txt";
+            foreach (string line in File.ReadAllLines(@"players.txt"))
+            {
+                playerslist.Add(new Players(line));
+            }
+            if (Convert.ToInt32(playerslist.Where(j => j.Name == MainWindow.Name).Count()) >= 1)
+            {
+                List<string> lines = new List<string>();
+                switch (MainWindow.Type_number)
+                {
+                    case 0:
+                        playerslist.Where(j => j.Name == MainWindow.Name).ToList().ForEach(j => { lines.Add($"{j.Name};{j.Category1GuessedNumber + correctanswer_num};{j.Category1QuestionsNumber + MainWindow.Question_number};{j.Category2GuessedNumber};{j.Category2QuestionsNumber};{j.Category3GuessedNumber};{j.Category3QuestionsNumber}"); });
+                        break;
+                    case 1:
+                        playerslist.Where(j => j.Name == MainWindow.Name).ToList().ForEach(j => { lines.Add($"{j.Name};{j.Category1GuessedNumber};{j.Category1QuestionsNumber};{j.Category2GuessedNumber + correctanswer_num};{j.Category2QuestionsNumber + MainWindow.Question_number};{j.Category3GuessedNumber};{j.Category3QuestionsNumber}"); });
+                        break;
+                    case 2:
+                        playerslist.Where(j => j.Name == MainWindow.Name).ToList().ForEach(j => { lines.Add($"{j.Name};{j.Category1GuessedNumber};{j.Category1QuestionsNumber};{j.Category2GuessedNumber};{j.Category2QuestionsNumber};{j.Category3GuessedNumber + correctanswer_num};{j.Category3QuestionsNumber + MainWindow.Question_number}"); });
+                        break;
+                }
+                playerslist.Where(j => j.Name != MainWindow.Name).ToList().ForEach(j => { lines.Add($"{j.Name};{j.Category1GuessedNumber};{j.Category1QuestionsNumber};{j.Category2GuessedNumber};{j.Category2QuestionsNumber};{j.Category3GuessedNumber};{j.Category3QuestionsNumber}"); });
+                File.WriteAllLines(fullPath, lines);
+            }
+            else
+            {
+                List<string> lines = new List<string>();
+                switch (MainWindow.Type_number)
+                {
+                    case 0:
+                        lines.Add($"{MainWindow.Name};{correctanswer_num};{MainWindow.Question_number};{0};{0};{0};{0}");
+                        break;
+                    case 1:
+                        lines.Add($"{MainWindow.Name};{0};{0};{correctanswer_num};{MainWindow.Question_number};{0};{0}");
+                        break;
+                    case 2:
+                        lines.Add($"{MainWindow.Name};{0};{0};{0};{0};{correctanswer_num};{MainWindow.Question_number}");
+                        break;
+                }
+                playerslist.Where(j => j.Name != MainWindow.Name).ToList().ForEach(j => { lines.Add($"{j.Name};{j.Category1GuessedNumber};{j.Category1QuestionsNumber};{j.Category2GuessedNumber};{j.Category2QuestionsNumber};{j.Category3GuessedNumber};{j.Category3QuestionsNumber}"); });
+                File.WriteAllLines(fullPath, lines);
+            }
+        }
+        public void Answer1_Click(object sender, RoutedEventArgs e)
+        {
+            QuizGame(1);
+        }
+        public void Answer2_Click(object sender, RoutedEventArgs e)
+        {
+            QuizGame(2);
+        }
+        public void Answer3_Click(object sender, RoutedEventArgs e)
+        {
+            QuizGame(3);
+        }
+        public void Answer4_Click(object sender, RoutedEventArgs e)
+        {
+            QuizGame(4);
+        }
+        public void Results_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new Results();
         }
     }
 }

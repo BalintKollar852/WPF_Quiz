@@ -5,18 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Quiz"
         mc:Ignorable="d"
-        Title="Form1" Height="450" Width="800" Background="#040c0e" Foreground="White" MinHeight="300" MinWidth="600">
+        Title="Form1" Height="450" Width="800" Background="#0e1013" Foreground="White" MinHeight="300" MinWidth="600">
+
     <Viewbox>
-        <Grid Width="375">
+        <Grid Width="Auto">
             <StackPanel>
                 <Label Foreground="White" FontSize="15" Content="Adja meg a teljes nevét: "></Label>
                 <ComboBox x:Name="Name_input" IsEditable="True" HorizontalAlignment="Stretch" Foreground="Black" FontWeight="Bold" TextBoxBase.TextChanged="ComboBoxName_TextChanged"/>
                 <Label Foreground="White" FontSize="15" Content="Adja meg a témakört: "></Label>
-                <Grid Background="#132226">
-                    <RadioButton x:Name="category1_button" Foreground="White" Content="Informatika" Margin="10,5,0,0" IsChecked="True"/>
+                <Grid Background="#101316">
+                    <RadioButton x:Name="category1_button" Foreground="White" Content="Informatika" Margin="10,5,0,0" IsChecked="True"  />
                     <RadioButton x:Name="category2_button" Foreground="White" Content="Edzőterem" Margin="10,25,0,0"/>
                     <RadioButton x:Name="category3_button" Foreground="White" Content="Gaming" Margin="10,45,0,5"/>
                 </Grid>
+                <Label Foreground="White" FontSize="15" Content="Adja meg a kérdések számát: "></Label>
+                <Slider x:Name="QuestionNumberSlider" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120" Minimum="3" Maximum="15" TickPlacement="BottomRight" IsSnapToTickEnabled="True" TickFrequency="3"  AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0"/>
                 <Button Click="GameClick" x:Name="GameStart_Button" IsEnabled="False" Content="Játék indítása" Background="#132226" Foreground="White" Width="80" Margin="0, 25, 0, 10" HorizontalAlignment="Center"/>
             </StackPanel>
             <Frame x:Name="MainFrame" Margin="-83,0,-83,0"/>
