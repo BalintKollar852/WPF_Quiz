@@ -50,6 +50,7 @@ namespace WPF_Quiz
         }
         public void GameClick(object sender, RoutedEventArgs e)
         {
+            MultipleAnswer = MultipleAnswer_YesButon.IsChecked == true ? true : false;
             Question_number = Convert.ToInt32(QuestionNumberSlider.Value);
             Name = Convert.ToString(Name_input.Text);
             if (category1_button.IsChecked == true) { Type_number = 0; Topic_text = "Informatika"; }

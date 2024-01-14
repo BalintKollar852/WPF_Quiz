@@ -29,3 +29,16 @@ i;4;Melyik számítógépes periféria eszköz segít a rajzolásban és grafika
 i;4;Melyik a legnépszerűbb programozási nyelv a webfejlesztés terén?;Java;Python;C++;Php
 i;3;Melyik nem számítógépes operációs rendszer?;Windows;Linux;iOS;Facebook
 i;1;Mi a "LAN" szerepe az informatikában?;Helyi hálózati kapcsolatok biztosítása;Adatok tárolása a felhőben;Webes keresés optimalizálása;Felhasználói élmény javítása
+i;12;Mi a különbség a for ciklus és a while ciklus között?;For ciklus: Fix lépésközű ismétlés;While ciklus: Feltételhez kötött ismétlés;For ciklus: Feltételhez kötött ismétlés;While ciklus: Fix lépésközű ismétlés
+i;14;Melyik a két leggyakrabban használt HTTP kérési mód?;GET;PUT;SEND;POST
+1;23;Melyik fájlformátum használhat tömörítésre?;EXE;RAR;ZIP;TXT
+i;24;Melyek internetes böngészők?;Fortnite;DuckDuckGo;Linux;Google Chrome
+i;14;Mi a különbség a HTTP és a HTTPS között?;HTTP: Nem titkosított adatátvitel;HTTP: Csak szöveges adatokat továbbít;HTTPS: Csak képeket és hangot továbbít;HTTPS: Titkosított adatátvitel
+i;12;Melyik a két fő típusú operációs rendszer?;Windows;Linux;MacOS;Android
+i;23;Melyik programozási nyelvet használja a WordPress alapjául szolgáló rendszer?;Java;PHP;JavaScript;Pythona
+i;13;Melyek létező adattípusok a JavaScriptben?;String;Toolean;var;car
+i;24;Melyik a két fő típusú memória egy számítógépben?;ROM;RAM;USB Flash Drive;Hard Disk
+i;34;Melyik a két legelterjedtebb operációs rendszer mobil eszközökön?;Windows Mobile;Blackberry OS;iOS;Android
+i;124;Melyik a legelterjedtebb fájlformátum a képek tárolására?;JPEG;PNG;TIFF;GIF
+i;134;Melyik az alábbiak közül egy felhőalapú szolgáltatás?;Google Drive;Hard Disk;Dropbox;Microsoft OneDrive
+i;123;Melyik a következő webes technológiák közül egy backend keretrendszer?;Node.js;React;Vue.js;Angular

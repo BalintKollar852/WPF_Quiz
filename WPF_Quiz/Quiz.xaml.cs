@@ -124,10 +124,20 @@ namespace WPF_Quiz
             foreach (string line in File.ReadAllLines(@"questions.txt"))
             {
                 string[] l = line.Split(';');
-                if (l[0] == "i" && MainWindow.Type_number == 0) questionslist.Add(new Questions(line));
-                if (l[0] == "e" && MainWindow.Type_number == 1) questionslist.Add(new Questions(line));
-                if (l[0] == "g" && MainWindow.Type_number == 2) questionslist.Add(new Questions(line));
+                if (MainWindow.MultipleAnswer)
+                {
+                    if (l[0] == "i" && MainWindow.Type_number == 0) questionslist.Add(new Questions(line));
+                    if (l[0] == "e" && MainWindow.Type_number == 1) questionslist.Add(new Questions(line));
+                    if (l[0] == "g" && MainWindow.Type_number == 2) questionslist.Add(new Questions(line));
+                }
+                else if (l[1].Count() == 1)
+                {
+                    if (l[0] == "i" && MainWindow.Type_number == 0) questionslist.Add(new Questions(line));
+                    if (l[0] == "e" && MainWindow.Type_number == 1) questionslist.Add(new Questions(line));
+                    if (l[0] == "g" && MainWindow.Type_number == 2) questionslist.Add(new Questions(line));
+                }
             }
+
             //Ezek már a randomizált kérdések/válaszok a beolvasott adatokból a menüben kiválasztott darab számba
             shuffledquestions = (List<Questions>)questionslist.OrderBy(a => rng.Next()).Take(MainWindow.Question_number).ToList();
             QuestionsAndAnswersLoad();
@@ -136,10 +146,10 @@ namespace WPF_Quiz
         //ez fut le folyamatosan (masodperc megfigyelesem szerint)
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if (timerNumber > 0 && (Answer_buttonslist.All(a => a.IsChecked == false))) timerLabel.Content = timerNumber--;
+            if (timerNumber > 0 && Answer_buttonslist.Count(b => b.IsChecked == true) != shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber.ToString().Length) timerLabel.Content = timerNumber--;
             else if (Answer_buttonslist.All(a => a.IsEnabled == true))
             {
-                QuizGame(0, true); timerLabel.Content = "Az idő lejárt!";
+                QuizGame(new List<int> {0}, true); timerLabel.Content = "Az idő lejárt!";
                 timesateachr.Add(0);
             }
             else
@@ -160,7 +170,19 @@ namespace WPF_Quiz
             Answer2_button.Content = shuffledquestions[CurrentQuestionNumber - 1].Answer2;
             Answer3_button.Content = shuffledquestions[CurrentQuestionNumber - 1].Answer3;
             Answer4_button.Content = shuffledquestions[CurrentQuestionNumber - 1].Answer4;
-            QuestionLabel.Content = $"Kérdés ({CurrentQuestionNumber}/{MainWindow.Question_number})";
+            //Leellenőrzi hogy több válasz is lehet-e
+            if (shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber.ToString().Length > 1)
+            {
+                QuestionLabel.Content = $"Kérdés ({CurrentQuestionNumber}/{MainWindow.Question_number}) - Több válaszos kérdés";
+                //Mivel a többválaszos kérdés opció be van kapcsolva akkor, a RadioButtons-t beállítja külön GroupName-ekre hogy rálehessen nyomni többre is
+                Answer_buttonslist.ForEach(b => b.GroupName = b.Name);
+            }
+            else
+            {
+                QuestionLabel.Content = $"Kérdés ({CurrentQuestionNumber}/{MainWindow.Question_number})";
+                //Vissza/beállítja a RadionButtons GroupName-ét azonosra hogy csak az egyik-re lehessen nyomni
+                Answer_buttonslist.ForEach(b => b.GroupName = "AnswerButtonsGroup");
+            }
             //Ellenőrzi hogy a jelenlegi krédés nem érte-e el a menüben kiválasztott kérdés db számot, ha eléri akkor kikapcsolja a 'Következő kérdés' gombot
             if (CurrentQuestionNumber < MainWindow.Question_number)
             {
@@ -172,41 +194,57 @@ namespace WPF_Quiz
             }
         }
 
-        private void QuizGame(int answer_number, bool timer_passed)
+        private void QuizGame(List<int> answer_number, bool timer_passed)
         {
+            string correctanswertext = "";
             //Kikapcsolja a RadioButtons-t
             for (int i = 0; i < Answer_buttonslist.Count(); i++)
             {
                 Answer_buttonslist[i].IsEnabled = false ;
             }
             //Megnézi hogy a kiválasztott válasz egyezik-e a helyes válasszal és zölddel jelzi az helyességét, pirossal pedig ha téves volt
-            if (shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber == answer_number)
+            if (shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber == int.Parse(string.Concat(answer_number)))
             {
-                Answer_buttonslist[answer_number - 1].Foreground = Brushes.LawnGreen;
+
+                for (int i = 0; i < answer_number.Count(); i++)
+                {
+                    Answer_buttonslist[answer_number[i] - 1].Foreground = Brushes.LawnGreen;
+                    correctanswertext += Convert.ToString(Answer_buttonslist[i].Content);
+                }
                 correctanswer_num++;
             }
             else
             {
                 if (!timer_passed)
                 {
-                    Answer_buttonslist[answer_number - 1].Foreground = Brushes.Red;
+                    for (int i = 0; i < answer_number.Count(); i++)
+                    {
+                        Answer_buttonslist[answer_number[i] - 1].Foreground = Brushes.Red;
+                    }
                 }
                 //Ha lejár az idő az inkorrekt válaszokat pirosra rakja
                 else
                 {
                     for (int i = 0; i < Answer_buttonslist.Count; i++)
                     {
-                        if (i != shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber - 1)
+                        if (!shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber.ToString().Contains($"{i + 1}"))
                         {
                             Answer_buttonslist[i].Foreground = Brushes.Red;
                         }
                     }
                 }
-                Answer_buttonslist[shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber - 1].Foreground = Brushes.LawnGreen;
+                for (int i = 0; i < Answer_buttonslist.Count; i++)
+                {
+                    if (shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber.ToString().Contains($"{i + 1}"))
+                    {
+                        Answer_buttonslist[i].Foreground = Brushes.LawnGreen;
+                        correctanswertext += Convert.ToString(Answer_buttonslist[i].Content);
+                    }
+                }
             }
 
             //A jelenlegi eredményt elmenti egy string változóban amit majd a Result oldadlon felhasználunk
-            CurrentResults += $"{CurrentQuestionNumber}.kérdés: {Questions_text.Text} - Helyes válasz: {Answer_buttonslist[shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber - 1].Content} - Adott válasz: {(answer_number == shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber ? "jó" : "rossz")}\n";
+            CurrentResults += $"{CurrentQuestionNumber}.kérdés: {Questions_text.Text} - Helyes válasz: {correctanswertext} - Adott válasz: {(shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber == int.Parse(string.Concat(answer_number)) ? "jó" : "rossz")}\n";
 
             //Hogyha az utolsó kérdésre is lett válasz adva akkor az 'Eredmények' gombot bekapcsolja
             if (CurrentQuestionNumber >= MainWindow.Question_number && Answer_buttonslist.All(b=>b.IsEnabled == false))
@@ -235,6 +273,26 @@ namespace WPF_Quiz
                 Answer_buttonslist[i].Foreground = Brushes.White;
             }
             QuestionsAndAnswersLoad();
+        }
+
+        private void CheckMultipleAnswerButton(int answer_number)
+        {
+            if (shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber.ToString().Length == 1)
+            {
+                QuizGame(new List<int> { answer_number }, false);
+            }
+            else if (Answer_buttonslist.Count(b => b.IsChecked == true) == shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber.ToString().Length)
+            {
+                List<int> answerindexlist = new List<int>();
+                for (int i = 0; i < Answer_buttonslist.Count(); i++)
+                {
+                    if (Answer_buttonslist[i].IsChecked == true)
+                    {
+                        answerindexlist.Add(i + 1);
+                    }
+                }
+                QuizGame(answerindexlist, false);
+            }
         }
 
         //Fájlba írás a játékos adatait (csak akkor menti el ha az összes kérdés véget ért)
@@ -285,19 +343,20 @@ namespace WPF_Quiz
         }
         public void Answer1_Click(object sender, RoutedEventArgs e)
         {
-            QuizGame(1, false);
+            CheckMultipleAnswerButton(1);
         }
         public void Answer2_Click(object sender, RoutedEventArgs e)
         {
-            QuizGame(2, false);
+
+            CheckMultipleAnswerButton(2);
         }
         public void Answer3_Click(object sender, RoutedEventArgs e)
         {
-            QuizGame(3, false);
+            CheckMultipleAnswerButton(3);
         }
         public void Answer4_Click(object sender, RoutedEventArgs e)
         {
-            QuizGame(4, false);
+            CheckMultipleAnswerButton(4);
         }
         public void Results_Click(object sender, RoutedEventArgs e)
         {
