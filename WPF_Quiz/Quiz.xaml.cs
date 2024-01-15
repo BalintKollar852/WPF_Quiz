@@ -35,6 +35,7 @@ namespace WPF_Quiz
         public int Category2QuestionsNumber { get; private set; }
         public int Category3GuessedNumber { get; private set; }
         public int Category3QuestionsNumber { get; private set; }
+        public int AverageTimeSum { get; private set; }
         public Players(string line)
         {
             string[] s = line.Split(';');
@@ -45,6 +46,7 @@ namespace WPF_Quiz
             Category2QuestionsNumber = Convert.ToInt32(s[4]);
             Category3GuessedNumber = Convert.ToInt32(s[5]);
             Category3QuestionsNumber = Convert.ToInt32(s[6]);
+            AverageTimeSum = Convert.ToInt32(s[7]);
         }
     }
     class Questions
@@ -79,7 +81,6 @@ namespace WPF_Quiz
         private DispatcherTimer timer;
         private List<int> timesateachr = new List<int>();
         private static int alreadyExecuted = 0;
-        private double averagepoint;
 
         public Quiz()
         {
@@ -111,7 +112,8 @@ namespace WPF_Quiz
                     word = String.Empty;
                     word += $"Informatika témakörben helyes válaszainak száma: {l[1]}/{l[2]}\n";
                     word += $"Edzőtererm témakörben helyes válaszainak száma: {l[3]}/{l[4]}\n";
-                    word += $"Gaming témakörben helyes válaszainak száma: {l[5]}/{l[6]}";
+                    word += $"Gaming témakörben helyes válaszainak száma: {l[5]}/{l[6]}\n";
+                    word += $"Átlagos válasz idő: {Convert.ToInt32(l[7]) / (Convert.ToInt32(l[2]) + Convert.ToInt32(l[4]) + Convert.ToInt32(l[6]))} másodperc";
                 }
             }
             Previous_resultstext.Text = word;
@@ -249,9 +251,8 @@ namespace WPF_Quiz
             //Hogyha az utolsó kérdésre is lett válasz adva akkor az 'Eredmények' gombot bekapcsolja
             if (CurrentQuestionNumber >= MainWindow.Question_number && Answer_buttonslist.All(b=>b.IsEnabled == false))
             {
-                averagepoint = timesateachr.Average();
-                WriteToFile();
-                CurrentResults_ToAnotherPage = CurrentResults + $"Összesen {correctanswer_num} jó választ adott.";
+                WriteToFile(timesateachr.Sum());
+                CurrentResults_ToAnotherPage = CurrentResults + $"Összesen {correctanswer_num} jó választ adott.\nÁtlagos válasz idő: {timesateachr.Average()} másodperc.";
                 Results_button.IsEnabled = true ;
             }
             else if (Answer_buttonslist.All(b => b.IsEnabled == false))
@@ -296,7 +297,7 @@ namespace WPF_Quiz
         }
 
         //Fájlba írás a játékos adatait (csak akkor menti el ha az összes kérdés véget ért)
-        public void WriteToFile()
+        public void WriteToFile(int averagetime)
         {
             List<Players> playerslist = new List<Players>();
             string fullPath = $"players.txt";
@@ -310,16 +311,16 @@ namespace WPF_Quiz
                 switch (MainWindow.Type_number)
                 {
                     case 0:
-                        playerslist.Where(j => j.Name == MainWindow.Name).ToList().ForEach(j => { lines.Add($"{j.Name};{j.Category1GuessedNumber + correctanswer_num};{j.Category1QuestionsNumber + MainWindow.Question_number};{j.Category2GuessedNumber};{j.Category2QuestionsNumber};{j.Category3GuessedNumber};{j.Category3QuestionsNumber}"); });
+                        playerslist.Where(j => j.Name == MainWindow.Name).ToList().ForEach(j => { lines.Add($"{j.Name};{j.Category1GuessedNumber + correctanswer_num};{j.Category1QuestionsNumber + MainWindow.Question_number};{j.Category2GuessedNumber};{j.Category2QuestionsNumber};{j.Category3GuessedNumber};{j.Category3QuestionsNumber};{j.AverageTimeSum + averagetime}"); });
                         break;
                     case 1:
-                        playerslist.Where(j => j.Name == MainWindow.Name).ToList().ForEach(j => { lines.Add($"{j.Name};{j.Category1GuessedNumber};{j.Category1QuestionsNumber};{j.Category2GuessedNumber + correctanswer_num};{j.Category2QuestionsNumber + MainWindow.Question_number};{j.Category3GuessedNumber};{j.Category3QuestionsNumber}"); });
+                        playerslist.Where(j => j.Name == MainWindow.Name).ToList().ForEach(j => { lines.Add($"{j.Name};{j.Category1GuessedNumber};{j.Category1QuestionsNumber};{j.Category2GuessedNumber + correctanswer_num};{j.Category2QuestionsNumber + MainWindow.Question_number};{j.Category3GuessedNumber};{j.Category3QuestionsNumber};{j.AverageTimeSum + averagetime}"); });
                         break;
                     case 2:
-                        playerslist.Where(j => j.Name == MainWindow.Name).ToList().ForEach(j => { lines.Add($"{j.Name};{j.Category1GuessedNumber};{j.Category1QuestionsNumber};{j.Category2GuessedNumber};{j.Category2QuestionsNumber};{j.Category3GuessedNumber + correctanswer_num};{j.Category3QuestionsNumber + MainWindow.Question_number}"); });
+                        playerslist.Where(j => j.Name == MainWindow.Name).ToList().ForEach(j => { lines.Add($"{j.Name};{j.Category1GuessedNumber};{j.Category1QuestionsNumber};{j.Category2GuessedNumber};{j.Category2QuestionsNumber};{j.Category3GuessedNumber + correctanswer_num};{j.Category3QuestionsNumber + MainWindow.Question_number};{j.AverageTimeSum + averagetime}"); });
                         break;
                 }
-                playerslist.Where(j => j.Name != MainWindow.Name).ToList().ForEach(j => { lines.Add($"{j.Name};{j.Category1GuessedNumber};{j.Category1QuestionsNumber};{j.Category2GuessedNumber};{j.Category2QuestionsNumber};{j.Category3GuessedNumber};{j.Category3QuestionsNumber}"); });
+                playerslist.Where(j => j.Name != MainWindow.Name).ToList().ForEach(j => { lines.Add($"{j.Name};{j.Category1GuessedNumber};{j.Category1QuestionsNumber};{j.Category2GuessedNumber};{j.Category2QuestionsNumber};{j.Category3GuessedNumber};{j.Category3QuestionsNumber};{j.AverageTimeSum}"); });
                 File.WriteAllLines(fullPath, lines);
             }
             else
@@ -328,16 +329,16 @@ namespace WPF_Quiz
                 switch (MainWindow.Type_number)
                 {
                     case 0:
-                        lines.Add($"{MainWindow.Name};{correctanswer_num};{MainWindow.Question_number};{0};{0};{0};{0}");
+                        lines.Add($"{MainWindow.Name};{correctanswer_num};{MainWindow.Question_number};{0};{0};{0};{0};{averagetime}");
                         break;
                     case 1:
-                        lines.Add($"{MainWindow.Name};{0};{0};{correctanswer_num};{MainWindow.Question_number};{0};{0}");
+                        lines.Add($"{MainWindow.Name};{0};{0};{correctanswer_num};{MainWindow.Question_number};{0};{0};{averagetime}");
                         break;
                     case 2:
-                        lines.Add($"{MainWindow.Name};{0};{0};{0};{0};{correctanswer_num};{MainWindow.Question_number}");
+                        lines.Add($"{MainWindow.Name};{0};{0};{0};{0};{correctanswer_num};{MainWindow.Question_number};{averagetime}");
                         break;
                 }
-                playerslist.Where(j => j.Name != MainWindow.Name).ToList().ForEach(j => { lines.Add($"{j.Name};{j.Category1GuessedNumber};{j.Category1QuestionsNumber};{j.Category2GuessedNumber};{j.Category2QuestionsNumber};{j.Category3GuessedNumber};{j.Category3QuestionsNumber}"); });
+                playerslist.Where(j => j.Name != MainWindow.Name).ToList().ForEach(j => { lines.Add($"{j.Name};{j.Category1GuessedNumber};{j.Category1QuestionsNumber};{j.Category2GuessedNumber};{j.Category2QuestionsNumber};{j.Category3GuessedNumber};{j.Category3QuestionsNumber};{j.AverageTimeSum}"); });
                 File.WriteAllLines(fullPath, lines);
             }
         }

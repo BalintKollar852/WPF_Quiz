@@ -39,7 +39,8 @@ namespace WPF_Quiz
                     word = String.Empty;
                     word += $"Informatika témakörben helyes válaszainak száma: {l[1]}/{l[2]}\n";
                     word += $"Edzőtererm témakörben helyes válaszainak száma: {l[3]}/{l[4]}\n";
-                    word += $"Gaming témakörben helyes válaszainak száma: {l[5]}/{l[6]}";
+                    word += $"Gaming témakörben helyes válaszainak száma: {l[5]}/{l[6]}\n";
+                    word += $"Átlagos válasz idő: {Convert.ToInt32(l[7]) / (Convert.ToInt32(l[2]) + Convert.ToInt32(l[4]) + Convert.ToInt32(l[6]))} másodperc";
                 }
             }
             Previous_resultstext.Text = word;

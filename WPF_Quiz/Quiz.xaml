@@ -12,7 +12,7 @@
         </StackPanel>
         <StackPanel Margin="0, 25, 0, 0">
             <Label x:Name="Previous_resultslabel" Content="eddigi eredményei: " Foreground="White"></Label>
-            <TextBox x:Name="Previous_resultstext" Height="50" IsReadOnly="True"></TextBox>
+            <TextBox x:Name="Previous_resultstext" Height="65" IsReadOnly="True"></TextBox>
             <Label Content="Témakör:" Foreground="White"></Label>
             <TextBox x:Name="Topic_text" Height="30" IsReadOnly="True"></TextBox>
             <Label x:Name="QuestionLabel" Content="Kérdés:" Foreground="White"></Label>

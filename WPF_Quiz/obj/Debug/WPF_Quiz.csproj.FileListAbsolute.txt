@@ -88,3 +88,5 @@ C:\Users\Bence\Documents\GitHub\WPF_Quiz\WPF_Quiz\obj\Debug\WPF_Quiz.csproj.Gene
 C:\Users\Bence\Documents\GitHub\WPF_Quiz\WPF_Quiz\obj\Debug\WPF_Quiz.csproj.CoreCompileInputs.cache
 C:\Users\Bence\Documents\GitHub\WPF_Quiz\WPF_Quiz\obj\Debug\WPF_Quiz.exe
 C:\Users\Bence\Documents\GitHub\WPF_Quiz\WPF_Quiz\obj\Debug\WPF_Quiz.pdb
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\obj\Debug\Results.g.cs
+C:\Users\kollar.balint_csany-\Documents\Github\WPF_Quiz\WPF_Quiz\obj\Debug\Results.baml

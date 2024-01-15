@@ -13,7 +13,7 @@
             <Label x:Name="Current_resultslabel" Content="A játék eredménye: " Foreground="White"></Label>
             <TextBox x:Name="Current_resultstext" Height="115" IsReadOnly="True" AcceptsReturn="True"  VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" ></TextBox>
             <Label x:Name="Previous_resultslabel" Content="eddigi eredményei: " Foreground="White"></Label>
-            <TextBox x:Name="Previous_resultstext" Height="50" IsReadOnly="True"></TextBox>
+            <TextBox x:Name="Previous_resultstext" Height="65" IsReadOnly="True"></TextBox>
             <Button Content="Új játék" HorizontalAlignment="Center" Margin="0,50,0,0" Width="200" Height="40" Foreground="Black" FontFamily="Arial Black" FontSize="18" Click="RestartGame_Click"/>
         </StackPanel>
         <Frame x:Name="MainFrame"/>
