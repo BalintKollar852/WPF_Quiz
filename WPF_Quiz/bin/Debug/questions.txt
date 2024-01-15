@@ -41,4 +41,4 @@ i;24;Melyik a két fő típusú memória egy számítógépben?;ROM;RAM;USB Flas
 i;34;Melyik a két legelterjedtebb operációs rendszer mobil eszközökön?;Windows Mobile;Blackberry OS;iOS;Android
 i;124;Melyik a legelterjedtebb fájlformátum a képek tárolására?;JPEG;PNG;TIFF;GIF
 i;134;Melyik az alábbiak közül egy felhőalapú szolgáltatás?;Google Drive;Hard Disk;Dropbox;Microsoft OneDrive
-i;123;Melyik a következő webes technológiák közül egy backend keretrendszer?;Node.js;React;Vue.js;Angular
+i;123;Melyik a következő webes technológiák közül backend keretrendszer?;Node.js;React;Vue.js;Angular
