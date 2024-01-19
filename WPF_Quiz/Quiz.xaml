@@ -17,11 +17,20 @@
             <TextBox x:Name="Topic_text" Height="30" IsReadOnly="True"></TextBox>
             <Label x:Name="QuestionLabel" Content="Kérdés:" Foreground="White"></Label>
             <TextBox x:Name="Questions_text" Height="30" IsReadOnly="True"></TextBox>
-            <Grid x:Name="Answers_Grid" Background="#101316">
-                <RadioButton x:Name="Answer1_button" Foreground="White" Margin="10,5,0,0"  Click="Answer1_Click"/>
-                <RadioButton x:Name="Answer2_button" Foreground="White" Margin="10,25,0,0" Click="Answer2_Click"/>
-                <RadioButton x:Name="Answer3_button" Foreground="White" Margin="10,45,0,0" Click="Answer3_Click"/>
-                <RadioButton x:Name="Answer4_button" Foreground="White" Margin="10,65,0,5" Click="Answer4_Click"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid x:Name="Answers_Grid" Grid.Column="0" Background="#101316">
+                    <RadioButton x:Name="Answer1_button" Foreground="White" Margin="10,5,0,0"  Click="Answer1_Click"/>
+                    <RadioButton x:Name="Answer2_button" Foreground="White" Margin="10,25,0,0" Click="Answer2_Click"/>
+                    <RadioButton x:Name="Answer3_button" Foreground="White" Margin="10,45,0,0" Click="Answer3_Click"/>
+                    <RadioButton x:Name="Answer4_button" Foreground="White" Margin="10,65,0,5" Click="Answer4_Click"/>
+                </Grid>
+                <Grid x:Name="Image_Grid" Grid.Column="1">
+                    <Image x:Name="QuestionImage" HorizontalAlignment="Left" Height="84" VerticalAlignment="Top" />
+                </Grid>
             </Grid>
             <Button x:Name="NextQuestion_button" Content="Következő kérdés" HorizontalAlignment="Center" Margin="0,20,0,0" Width="436" Height="50" Foreground="Black" FontFamily="Arial Black" FontSize="18" Click="NextQuestionClick" IsEnabled="False"/>
             <Button x:Name="Results_button" Content="Eredmények" HorizontalAlignment="Center" Margin="0,20,0,0" Width="436" Height="50" Foreground="Black" FontFamily="Arial Black" FontSize="18" IsEnabled="False" Click="Results_Click"/>

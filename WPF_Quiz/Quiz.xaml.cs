@@ -57,6 +57,7 @@ namespace WPF_Quiz
         public string Answer2 { get; private set; }
         public string Answer3 { get; private set; }
         public string Answer4 { get; private set; }
+        public string ImageSource { get; private set; }
         public Questions(string line)
         {
             string[] s = line.Split(';');
@@ -66,6 +67,7 @@ namespace WPF_Quiz
             Answer2 = s[4];
             Answer3 = s[5];
             Answer4 = s[6];
+            ImageSource = s.ElementAtOrDefault(7);
         }
     }
     public partial class Quiz : Page
@@ -172,6 +174,10 @@ namespace WPF_Quiz
             Answer2_button.Content = shuffledquestions[CurrentQuestionNumber - 1].Answer2;
             Answer3_button.Content = shuffledquestions[CurrentQuestionNumber - 1].Answer3;
             Answer4_button.Content = shuffledquestions[CurrentQuestionNumber - 1].Answer4;
+            //Kép beillesztése ha van
+            QuestionImage.Source = new BitmapImage(new Uri($"{shuffledquestions[CurrentQuestionNumber - 1].ImageSource}", UriKind.RelativeOrAbsolute));
+            Image_Grid.SetValue(Grid.ColumnProperty, shuffledquestions[CurrentQuestionNumber - 1].ImageSource != null ? 0 : 1);
+            Answers_Grid.SetValue(Grid.ColumnProperty, shuffledquestions[CurrentQuestionNumber - 1].ImageSource != null ? 1 : 0);
             //Leellenőrzi hogy több válasz is lehet-e
             if (shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber.ToString().Length > 1)
             {
