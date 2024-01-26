@@ -259,7 +259,8 @@ namespace WPF_Quiz
             {
                 WriteToFile(timesateachr.Sum());
                 CurrentResults_ToAnotherPage = CurrentResults + $"Összesen {correctanswer_num} jó választ adott.\nÁtlagos válasz idő: {timesateachr.Average()} másodperc.";
-                Results_button.IsEnabled = true ;
+                NextQuestion_button.Visibility = Visibility.Hidden;
+                Results_button.Visibility = Visibility.Visible;
             }
             else if (Answer_buttonslist.All(b => b.IsEnabled == false))
             {
