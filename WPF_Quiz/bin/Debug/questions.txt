@@ -42,3 +42,24 @@ i;34;Melyik a két legelterjedtebb operációs rendszer mobil eszközökön?;Win
 i;124;Melyik a legelterjedtebb fájlformátum a képek tárolására?;JPEG;PNG;TIFF;GIF
 i;134;Melyik az alábbiak közül egy felhőalapú szolgáltatás?;Google Drive;Hard Disk;Dropbox;Microsoft OneDrive
 i;123;Melyik a következő webes technológiák közül backend keretrendszer?;Node.js;React;Vue.js;Angular
+e;1;Mennyi idő alatt láthatóak az edzés eredményei?;Általában néhány hét után láthatóak változások;Az edzés napján már láthatóak;Egy év múlva talán láthatóak;Fél év múlva már láthatóak
+e;12;Mi a két legjobb edzésidőszak?;Reggel;Délután;Éjszaka;Délben étkezés után
+e;3;Milyen edzőcipőt érdemes választani?;Kényelmetlen, szorító cipőt;2 mérettel nagyobb cipőt;Kényelmes, támasztékot biztosító cipőt;Nem kell cipő, hogy ne legyen büdös az ember lába
+e;4;Mennyi időt szánjunk bemelegítésre?;Nem kell bemelegíteni, az buzis;Egy óra bemelegítés szükséges;Amennyi időnk rendelkezésre áll, nem is kell edzeni utánna mert megfelel egy edzésnek;5-10 percnyi bemelegítés megfelel
+e;234;Mik a legjobb edzések a felsőtest erősítésére?;Gugolás;Fekvenyomás;Húzódzkodás;Vállból nyomás
+e;124;Miket tehetünk az edzés utáni izomláz ellen?;Nyújtás;Masszázs;Sorozat nézés;Pihenés
+e;4;Milyen szerepe van az edzővel való konzultációnak?;A személyes gondjaid meghallgatja;Érzelmes, esetleg erotikus kapcsolat létesíthetsz vele;Együtt filmezhetsz vele kardió közben;Személyre szabott tervet készít és segít a helyes technikában
+e;23;Mik a legjobb edzések a combizom erősítésére?;Evezés;Guggolás;Lábtoló;Fekvenyomás
+e;1;Mi a HIIT edzés?;Intervallum edzés;Istenhez való könyörgés edzés közben;Csak kardió edzés;Egy héten 3 nap edzés, 4 nap pihenő
+e;3;Mi a tabata tréning?;Egy ősi ázsiai edzés;Csak karra való edzés;Intenzív, rövid intervallumú edzés;Harcművészet közbeni edzés
+e;2;Mit jelent az edzés alatti "spotolás"?; A hölgyek idomainak bámulása;Segítségnyújtás súlyzós gyakorlatoknál;Elájulni egy gyakorlat közben;Elfáradni az edzésben
+e;12;Mikor érdemes változtatni az edzésterven?;Ha stagnál a fejlődés;Ha áltoznak a célok;Minden nap kell változtatni;Soha sem lehet változtatni
+e;3;Mi jellemzi a szálkásító edzéstervet?;Tömegnövelés;Dirty bulk;Kalóriadeficit;Tömegnővelő táplálékkiegészítők
+e;2;Milyen hatással van az edzés a stressz szintre?;Növeli a stresszt;Csökkenti a stresszt;Soha nem is stresszelünk;Nem változtat a stressz szintünkön
+e;24;Mik a legjobb étkezési szokások edzés előtt?;Nehéz étel fogyasztása;Könnyen emészthető szénhidrátok fogyasztása;Minél mocskosabb étel fogyasztása;Fehérje fogyasztása
+e;13;Miért fontos az edzés utáni nyújtás?(2);Csökkenti az izomlázat;Nem nyújtunk, az buzis;Javítja az izom rugalmasságát;Segít sérüléseket szerezni
+e;124;Mik a legjobb gyakorlatok a vállizom erősítésére?;Vállpressz;Oldalemelés;Gugolás;Arnold press
+e;134;Hogyan lehet megelőzni az edzés közbeni sérüléseket?; Bemelegítés;Egyből nagy súllyal edzés;Megfelelő technika;Pihenőidők betartása
+e;3;Miért fontos az edzés sokszínűsége?;Nem fontos, a démonjaink adnak motivációt, az elég;Hogy ne legyünk gorombák mikor megkérdezik mennyi van még hátra;Megakadályozza a monotóniát és fejleszti az összes izomcsoportunkat;Hogy ne legyünk túl sötétek
+e;123;Milyen étrend-kiegészítők segíthetnek az izomláz csökkentésében?;BCAA;Glutamin;Magnézium;Trenbolone
+e;34;Milyen előnyei vannak az edzésnek a mentális egészségre?;Idegbeteg lesz tőle az ember;Rontja a koncentrációt;Javítja a koncentrációt;Növeli az önbizalmat
