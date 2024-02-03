@@ -50,9 +50,9 @@ e;234;Mik a legjobb edzések a felsőtest erősítésére?;Gugolás;Fekvenyomás
 e;124;Miket tehetünk az edzés utáni izomláz ellen?;Nyújtás;Masszázs;Sorozat nézés;Pihenés
 e;4;Milyen szerepe van az edzővel való konzultációnak?;A személyes gondjaid meghallgatja;Érzelmes, esetleg erotikus kapcsolat létesíthetsz vele;Együtt filmezhetsz vele kardió közben;Személyre szabott tervet készít és segít a helyes technikában
 e;23;Mik a legjobb edzések a combizom erősítésére?;Evezés;Guggolás;Lábtoló;Fekvenyomás
-e;1;Mi a HIIT edzés?;Intervallum edzés;Istenhez való könyörgés edzés közben;Csak kardió edzés;Egy héten 3 nap edzés, 4 nap pihenő
+e;1;Mi a HIIT edzés?;Intervallum edzés;Istenhez való könyörgés edzés közben;Csak kardió edzés;Egy héten 2 nap edzés, 5 nap pihenő
 e;3;Mi a tabata tréning?;Egy ősi ázsiai edzés;Csak karra való edzés;Intenzív, rövid intervallumú edzés;Harcművészet közbeni edzés
-e;2;Mit jelent az edzés alatti "spotolás"?; A hölgyek idomainak bámulása;Segítségnyújtás súlyzós gyakorlatoknál;Elájulni egy gyakorlat közben;Elfáradni az edzésben
+e;2;Mit jelent az edzés alatti "spotolás"?;A hölgyek idomainak bámulása;Segítségnyújtás súlyzós gyakorlatoknál;Elájulni egy gyakorlat közben;Elfáradni az edzésben
 e;12;Mikor érdemes változtatni az edzésterven?;Ha stagnál a fejlődés;Ha áltoznak a célok;Minden nap kell változtatni;Soha sem lehet változtatni
 e;3;Mi jellemzi a szálkásító edzéstervet?;Tömegnövelés;Dirty bulk;Kalóriadeficit;Tömegnővelő táplálékkiegészítők
 e;2;Milyen hatással van az edzés a stressz szintre?;Növeli a stresszt;Csökkenti a stresszt;Soha nem is stresszelünk;Nem változtat a stressz szintünkön
@@ -63,3 +63,41 @@ e;134;Hogyan lehet megelőzni az edzés közbeni sérüléseket?; Bemelegítés;
 e;3;Miért fontos az edzés sokszínűsége?;Nem fontos, a démonjaink adnak motivációt, az elég;Hogy ne legyünk gorombák mikor megkérdezik mennyi van még hátra;Megakadályozza a monotóniát és fejleszti az összes izomcsoportunkat;Hogy ne legyünk túl sötétek
 e;123;Milyen étrend-kiegészítők segíthetnek az izomláz csökkentésében?;BCAA;Glutamin;Magnézium;Trenbolone
 e;34;Milyen előnyei vannak az edzésnek a mentális egészségre?;Idegbeteg lesz tőle az ember;Rontja a koncentrációt;Javítja a koncentrációt;Növeli az önbizalmat
+e;2;Mennyi időt érdemes szánni az edzőteremben való edzésre hetente?;Heti 7 nap;Heti 3-5 alkalommal;Heti 1 nap;Heti 2 alkalommal
+e;34;Milyen előnyei vannak a csoportos edzéseken való részvételnek?;Együtt könnyebb a súlyt emelni;Zavarhatnak az emberek;Motiválóak lehetnek;Közösségi élményt nyújthatnak
+e;123;Milyen szempontokat érdemes figyelembe venni az edzőterem kiválasztásakor?;Elérhetőség;Eszközök minősége;A terem légköre;Az edőterem kinézetét
+e;13;Hogyan lehet fenntartani a motivációt hosszú távú edzések során?;Célok kitűzése;Étrendkiegészítők szedése;Támogató közeg;Jégkrém
+e;1;Mennyire fontos a megfelelő folyadékbevitel az edzés során?;Kulcsfontosságú a folyadék fogyasztás;Nem kell folyadékot fogyasztani;Nem szabad folyadékot fogyasztani;Óránként elég 2dl víz
+e;4;Milyen szerepe van az edzésnaplónak?;Olyan mint egy titkos napló, bele írhatjuk, hogy kit utálunk;A kedvenc sorozataink címét beleírhatjuk;A mama receptjét beleírhatjuk;Feljegyezhetjük az előrehaladásunk, így azt nyomon tudjuk követni
+e;124;Mik a legjobb gyakorlatok a hasizom erősítésére?;Plank;Hasprés;Fekvenyomás;Bicikli-típusú gyakorlatok
+e;3;Mennyi pihenőt ajánlott tartani két gyakorlat között?;Nincs szükségünk pihenőre, egyből visszakapjuk életerőnk ahogy letesszük a súlyt;Egy óra;Fél óra;Ez változó általában fél-2 perc pihenőidő elég
+e;2;Miért fontos a helyes testtartás az edzés során?;Hogy ne fejlődjünk;Hogy csökkentsük a sérülések kockázatát; és növeljük az edzés hatékonyságát;Hogy ha valaki fotózik a háttérből, jól nézzünk ki;Hogy a levegő ne tudjon normálisan áramlani
+e;4;Milyen szempontokat érdemes figyelembe venni a súlyzók kiválasztásakor?;Hogy szépek legyenek;Hogy férfias színűk legyen;Súlyoknak kihívást kell jelenteniük;Nem szabad túl nehéznek lenniük, hogy elveszítsük a technikát
+g;1;Melyik évben jelent meg az első videojáték?;1958;2006;1789;2012
+g;3;Mi volt az első játék a „The Legend of Zelda” sorozatban?;Space Invaders;Fortnite;The Legend of Zelda;The Legend of Zolda
+g;2;Melyik játék indította el a battle royale műfajt?;Fortnite;PUBG;Apex Legends;Call of Duty: Warzone
+g;4;Mi volt az első konzol, amelyik két irányba mozgatható pálcikákat tartalmazott?;PlayStation 2;Xbox 360;Nintendo switch;Nintendo 64
+g;2;Melyik évben jelent meg az első „Grand Theft Auto” játék?;2001;1997;1999;2003
+g;4;Melyik évben jelent meg az első „Super Mario Bros.” játék?;2007;1899;1995;1985
+g;1;Melyik játék adta a világnak az „MMORPG” kifejezést?;World of Warcraft;Minecraft;Euro Truck Simulator 2;Gas Station Simulator
+g;2;Mi a címe az első Pokémon játéknak?;Pokémon elveszve;Pokémon Red és Blue;Pokémon fagylalt és mazsola;Pokémon a keskeny út
+g;3;Melyik évben jelent meg az első „Assassin's Creed” játék?;1999;2001;2005;2007
+g;1;Ki az alapítója a Bethesda Softworks játékfejlesztő cégnek?;Christopher Weaver;Fellner Sándor;Steve Jobs;Bill Gates
+g;4;Melyik évben jelent meg az első „Final Fantasy” játék?;1999;1984;2001;1987
+g;1;Ki alkotta meg a „Minecraft” játékot?;Markus Persson;Elon Musk;Kancsal János;Jeff Bezos
+g;4;Mi volt az első videojáték, amelyik sztereó hangot használt?;Fortnite;PUGB;Granny Simulator;Space Invaders
+g;3;Ki a névadó karaktere a „Sonic the Hedgehog” sorozatnak?;Pista a sündisznó;Charmander a pokémon;Sonic a sündisznó;Elena Fisher
+g;1;Melyik játékban található meg először a „Master Chief” karakter?;Halo: Combat Evolved;Deceive INC.;Ghost Watchers;Hogwarts Legacy
+g;2;Melyik játékban szerepel először a „Gordon Freeman” karakter?;Counter-Strike 2;Half-Life;Duck Game;Green Hell
+g;3;Mi volt az első játék, amelyen sikerült összehozni egy MMO rendszert?;Pacify;PAYDAY 2;Meridian 59;Rust
+g;234;Melyik játékokban található meg „Ezio Auditore da Firenze” karaktere?;SCUM;Assassin's Creed II;Brotherhood;Revelations
+g;124;Melyik játékot hozta létre a Valve Corporation?;Half-Life;Portal;PUBG;Team Fortress 2
+g;134;Melyik játékok sorozatában található meg „Mario” karaktere?;Super Mario Bros.;Lost Ark;Super Mario 64;Super Mario Odyssey
+g;13;Melyek a népszerű MOBA játékok?;League of Legends;Fortnite;Dota 2;No Man's Sky
+g;24;Melyek a népszerű esport versenyek?;Olimpia;League of Legends World Championship;Euro Truck European Championship;Farming Simulator League
+g;134;Melyek népszerű játékplatformok?;PC;JBL;PlayStation;Xbox
+g;34;Melyek a népszerű „Soulsborne” játékok, melyeket a FromSoftware fejlesztett?;V Rising;Subnautica;Demon's Souls;Dark Souls
+g;14;Melyek a népszerű „Battlefield” játékok, amelyek a háborús FPS műfajba tartoznak?;Battlefield 1;Raft;Scrap Mechanic;Battlefield 4
+i;2;Milyen programozási nyelv látható a képen?;C#;Ruby;PHP;Node JS;https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/1200px-Ruby_logo.svg.png
+e;3;Milyen eszköz látható a képen?;Fekvenyomó pad;Kézi súlyzó; Combfeszítő gép; Gugoló keret;https://lh3.googleusercontent.com/proxy/Mv74lGjKG8eIqNBo1_73HtWRxMUuc-auxEXsdZmVW6Hc0oziUoa24qYCaVl-iyWk2MLI_JY0WJPzd9sMLzAyhWNFaQ
+g;4;Milyen játék logója látható a képen?;Counter-Strike 2;Battlefield 2;Star Wars: Battlefront II;Payday 2;https://static.wikia.nocookie.net/logopedia/images/1/1d/Payday_2_%28Icon%29.png/revision/latest?cb=20221112212310
