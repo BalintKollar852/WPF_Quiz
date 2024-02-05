@@ -176,8 +176,6 @@ namespace WPF_Quiz
             Answer4_button.Content = shuffledquestions[CurrentQuestionNumber - 1].Answer4;
             //Kép beillesztése ha van
             QuestionImage.Source = new BitmapImage(new Uri($"{shuffledquestions[CurrentQuestionNumber - 1].ImageSource}", UriKind.RelativeOrAbsolute));
-            Image_Grid.SetValue(Grid.ColumnProperty, shuffledquestions[CurrentQuestionNumber - 1].ImageSource != null ? 0 : 1);
-            Answers_Grid.SetValue(Grid.ColumnProperty, shuffledquestions[CurrentQuestionNumber - 1].ImageSource != null ? 1 : 0);
             //Leellenőrzi hogy több válasz is lehet-e
             if (shuffledquestions[CurrentQuestionNumber - 1].CorrectNumber.ToString().Length > 1)
             {

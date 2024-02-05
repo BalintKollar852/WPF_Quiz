@@ -48,8 +48,8 @@ namespace WPF_Quiz
         }
         public void RestartGame_Click(object sender, RoutedEventArgs e)
         {
-            /*System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-            Application.Current.Shutdown();*/
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
         }
 
         private void Current_resultstext_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)

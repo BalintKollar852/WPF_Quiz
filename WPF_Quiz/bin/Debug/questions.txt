@@ -99,5 +99,8 @@ g;134;Melyek népszerű játékplatformok?;PC;JBL;PlayStation;Xbox
 g;34;Melyek a népszerű „Soulsborne” játékok, melyeket a FromSoftware fejlesztett?;V Rising;Subnautica;Demon's Souls;Dark Souls
 g;14;Melyek a népszerű „Battlefield” játékok, amelyek a háborús FPS műfajba tartoznak?;Battlefield 1;Raft;Scrap Mechanic;Battlefield 4
 i;2;Milyen programozási nyelv látható a képen?;C#;Ruby;PHP;Node JS;https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/1200px-Ruby_logo.svg.png
-e;3;Milyen eszköz látható a képen?;Fekvenyomó pad;Kézi súlyzó; Combfeszítő gép; Gugoló keret;https://lh3.googleusercontent.com/proxy/Mv74lGjKG8eIqNBo1_73HtWRxMUuc-auxEXsdZmVW6Hc0oziUoa24qYCaVl-iyWk2MLI_JY0WJPzd9sMLzAyhWNFaQ
+e;3;Milyen eszköz látható a képen?;Fekvenyomó pad;Kézi súlyzó; Combfeszítő gép; Gugoló keret;https://elite-fitness.hu/images/products/bt218_20190509_165017.jpg
 g;4;Milyen játék logója látható a képen?;Counter-Strike 2;Battlefield 2;Star Wars: Battlefront II;Payday 2;https://static.wikia.nocookie.net/logopedia/images/1/1d/Payday_2_%28Icon%29.png/revision/latest?cb=20221112212310
+i;1;Milyen eszköz látható a képen?;Switch;Router;Számítógép;Monitor;https://images.spiceworks.com/wp-content/uploads/2022/07/26120446/Ciscos-Industry-Standard-Network-Switch.png
+e;4;Milyen eszköz látható a képen?;Combfeszítő gép;Tárcsa;Gurtni;Fekvenyomó pad;https://s13emagst.akamaized.net/products/39485/39484895/images/res_9d833429a855eb9e9841a274d65632d2.jpg
+g;2;Milyen játék logója látható a képen?;Left 4 Dead;League of Legends;LEGO Batman: The Videogame;Little Nightmares;https://esport1.hu/images/article/2019-09-18/5d81e4770a708_eeryozsxoaebwd8.jpg
